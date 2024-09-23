@@ -1,15 +1,30 @@
 {
   "name": "electron",
   "version": "1.0.0",
-  "description": "",
+  "description": "A brief description of your Electron app.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder"
   },
   "author": "Thiago Heleno",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^32.1.2"
+    "electron": "^32.1.2",
+    "electron-builder": "^25.0.5"
   },
-  "type": "module"
+  "type": "module",
+  "build": {
+    "appId": "com.thiago.electronmaua",
+    "productName": "Test",
+    "files": [
+      "main.js",
+      "index.html",
+      "assets/**/*",
+      "components/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
 }
