@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electron App with Pages</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: flex-start;
+        background-color: #007bff;
+        padding: 10px;
+      }
+
+      .navbar button {
+        font-size: 14px;
+        padding: 10px 20px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #343a40;
+      }
+
+      .page {
+        display: none;
+      }
+
+      .active {
+        display: block;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      .submit-button {
+        font-size: 18px;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        width: 100%;
+      }
+
+      .submit-button {
+        background-color: #28a745;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .submit-button:hover {
+        background-color: #218838;
+      }
+
+      .search-result {
+        font-size: 14px;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .client-card {
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: #fff;
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <button id="searchButton">Home</button>
+    </div>
+
+    <div class="container">
+      <!-- Search Page -->
+      <div id="searchPage" class="page active">
+        <h1>Buscar por cliente</h1>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Insira o nome do cliente..."
+        />
+        <div class="search-result" id="searchResult"></div>
+        <button class="submit-button" id="newClientButton">
+          Adicionar novo cliente
+        </button>
+        <div id="fileUploadContainer"></div>
+        <div class="search-result client-card" id="clientCard">
+          <p>Client: DECO</p>
+          <p>ID: 123</p>
+          <span style="visibility: hidden">{name: "Deco"}</span>
+          <button class="submit-button" id="createButton">
+            Gerar relatorio
+          </button>
+        </div>
+      </div>
+
+      <!-- Create Page -->
+      <div id="createPage" class="page">
+        <h1>Gerar novo relatorio</h1>
+        <form id="createForm">
+          <input type="text" placeholder="Field 1" required />
+          <input type="text" placeholder="Field 2" required />
+          <input type="text" placeholder="Field 3" required />
+          <input type="text" placeholder="Field 4" required />
+          <input type="text" placeholder="Field 5" required />
+
+          <label for="documentCount"
+            >Quantos documentos deseja adicionar?</label
+          >
+          <input type="number" id="documentCount" min="1" value="1" />
+          <button class="submit-button" type="button" id="renderUploadButton">
+            Adicionar
+          </button>
+
+          <div id="fileUploadContainer2"></div>
+          <button type="submit" class="submit-button">Submit</button>
+        </form>
+      </div>
+
+      <!-- New Client Page -->
+      <div id="newClientPage" class="page">
+        <h1>Adicionar novo cliente</h1>
+        <form id="newClientForm">
+          <input type="text" placeholder="Field 1" required />
+          <input type="text" placeholder="Field 2" required />
+          <input type="text" placeholder="Field 3" required />
+          <input type="text" placeholder="Field 4" required />
+          <input type="text" placeholder="Field 5" required />
+          <button type="submit" class="submit-button">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module">
+      import { createFileUploadComponent } from "./components/file-upload.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const searchButton = document.getElementById("searchButton");
+        const createButton = document.getElementById("createButton");
+        const newClientButton = document.getElementById("newClientButton");
+
+        const searchPage = document.getElementById("searchPage");
+        const createPage = document.getElementById("createPage");
+        const newClientPage = document.getElementById("newClientPage");
+
+        // Handle navigation
+        searchButton.addEventListener("click", () => showPage(searchPage));
+        createButton.addEventListener("click", () => showPage(createPage));
+        newClientButton.addEventListener("click", () =>
+          showPage(newClientPage)
+        );
+
+        function showPage(page) {
+          [searchPage, createPage, newClientPage].forEach((p) =>
+            p.classList.remove("active")
+          );
+          page.classList.add("active");
+        }
+
+        // Search page functionality
+        const searchInput = document.getElementById("searchInput");
+        const searchResult = document.getElementById("searchResult");
+
+        searchInput.addEventListener("input", () => {
+          searchResult.innerText = `Resultado para: ${searchInput.value}`;
+        });
+
+        const newClientForm = document.getElementById("newClientForm");
+        newClientForm.addEventListener("submit", handleNewClientSubmit);
+
+        async function handleNewClientSubmit(event) {
+          event.preventDefault();
+          const formData = new FormData(newClientForm);
+          const data = Object.fromEntries(formData);
+
+          try {
+            const response = await fetch(
+              "https://your-api-endpoint.com/api/create",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              }
+            );
+
+            if (response.ok) {
+              const result = await response.json();
+              console.log("Success:", result);
+              newClientForm.reset();
+            } else {
+              console.error("Error:", response.statusText);
+            }
+          } catch (error) {
+            console.error("Error:", error);
+          }
+        }
+
+        // File upload functionality
+        const apiUrl = "https://your-api-endpoint.com/api/upload"; // Replace with your actual API endpoint
+        const fileUploadContainer = document.getElementById(
+          "fileUploadContainer"
+        );
+        const fileUploadComponent = createFileUploadComponent(apiUrl);
+        fileUploadContainer.appendChild(fileUploadComponent);
+
+        const renderUploadButton =
+          document.getElementById("renderUploadButton");
+        const documentCountInput = document.getElementById("documentCount");
+        const fileUploadContainer2 = document.getElementById(
+          "fileUploadContainer2"
+        );
+
+        renderUploadButton.addEventListener("click", () => {
+          fileUploadContainer2.innerHTML = ""; // Clear previous uploads
+          const count = parseInt(documentCountInput.value) || 1;
+
+          for (let i = 0; i < count; i++) {
+            const fileUploadComponent = createFileUploadComponent(apiUrl);
+            fileUploadContainer2.appendChild(fileUploadComponent);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

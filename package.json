@@ -1,0 +1,15 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Thiago Heleno",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^32.1.2"
+  },
+  "type": "module"
+}
