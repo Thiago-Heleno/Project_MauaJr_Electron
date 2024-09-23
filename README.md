@@ -21,18 +21,18 @@ Before you begin, ensure you have the following installed:
 
 2. **Install Dependencies**
 
-```npm i
-
+```bash
+npm i
 ```
 
 3. **Run**
 
-```npm run start
-
+```bash
+npm run start
 ```
 
 3. **Build**
 
-```npm run dist
-
+```bash
+npm run dist
 ```
