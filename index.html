@@ -30,7 +30,7 @@
         color: white;
         background-color: #141a23;
         border: none;
-        border-radius: 5px;
+        border-radius: 25px;
         cursor: pointer;
         margin-right: 10px;
       }
@@ -83,8 +83,8 @@
         color: white;
         font-size: 16px;
         padding: 12px;
-        margin-top: 10px;
-        border-radius: 8px;
+        margin-top: 15px;
+        border-radius: 25px;
         border: none;
         cursor: pointer;
         width: 100%;
@@ -102,10 +102,11 @@
       }
 
       .client-card {
-        border-radius: 8px;
+        border-radius: 25px;
         border: none;
         padding: 20px;
         background-color: #1f2630;
+        margin: 0;
         margin-top: 15px;
         color: white;
       }
@@ -120,17 +121,19 @@
         align-items: center;
         position: relative;
         margin: 0 auto;
+        border-radius: 25px;
+        border: none;
+        background-color: #2d3440;
+        padding: 6px;
       }
 
       .search-container input[type="text"] {
-        padding-right: 50px;
+        margin: 0;
+        background-color: transparent;
+        border: none;
       }
 
       .search-container button {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
         border: none;
         background: transparent;
         cursor: pointer;
@@ -173,19 +176,20 @@
             <img src="assets/magnifier.svg" alt="Search" />
           </button>
         </div>
-        <div class="search-result" id="searchResult"></div>
+        <div class="search-result">
+          <span id="searchResult"></span>
+          <div class="search-result client-card" id="clientCard">
+            <p>Nome: DECO</p>
+            <p>CPF/CNPJ: 123</p>
+            <span style="visibility: hidden">{name: "Deco"}</span>
+            <button class="submit-button" id="createButton">
+              Gerar relatorio
+            </button>
+          </div>
+        </div>
         <button class="submit-button" id="newClientButton">
           Adicionar novo cliente
         </button>
-        <div id="fileUploadContainer"></div>
-        <div class="search-result client-card" id="clientCard">
-          <p>Client: DECO</p>
-          <p>ID: 123</p>
-          <span style="visibility: hidden">{name: "Deco"}</span>
-          <button class="submit-button" id="createButton">
-            Gerar relatorio
-          </button>
-        </div>
       </div>
 
       <!-- Create Page -->
@@ -311,8 +315,6 @@
         const fileUploadContainer = document.getElementById(
           "fileUploadContainer"
         );
-        const fileUploadComponent = createFileUploadComponent(apiUrl);
-        fileUploadContainer.appendChild(fileUploadComponent);
 
         const renderUploadButton =
           document.getElementById("renderUploadButton");

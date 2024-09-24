@@ -4,7 +4,7 @@ export function createFileUploadComponent(apiUrl) {
   container.innerHTML = `
       <div class="file-upload" id="fileUploadArea">
           <img src="assets/document.svg" alt="Upload Icon" class="upload-icon" />
-          <p>Drag & drop files here or click to select</p>
+          <p>Arrante & Solte arquivos aqui ou Clique para selecionar</p>
           <input type="file" id="fileInput" class="hidden" multiple />
       </div>
       <ul class="file-list" id="fileList"></ul>
