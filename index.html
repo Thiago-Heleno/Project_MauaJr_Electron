@@ -9,13 +9,14 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f8f9fa;
+        background-color: #141a23; /* Dark background */
+        color: #ffffff; /* White text color */
       }
 
       .navbar {
         display: flex;
         justify-content: flex-start;
-        background-color: #007bff;
+        background-color: #1f2630;
         padding: 10px;
       }
 
@@ -23,11 +24,15 @@
         font-size: 14px;
         padding: 10px 20px;
         color: white;
-        background-color: #007bff;
+        background-color: #1f2630;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         margin-right: 10px;
+      }
+
+      .navbar button:hover {
+        background-color: #3a4756;
       }
 
       .container {
@@ -36,7 +41,7 @@
 
       h1 {
         text-align: center;
-        color: #343a40;
+        color: #ffffff;
       }
 
       .page {
@@ -47,57 +52,121 @@
         display: block;
       }
 
-      input[type="text"],
-      input[type="number"],
-      .submit-button {
-        font-size: 18px;
-        padding: 10px;
+      input[type="text"] {
+        font-size: 16px;
+        padding: 12px;
         margin-bottom: 15px;
-        border-radius: 10px;
-        border: 1px solid #ccc;
+        border-radius: 25px;
+        border: none;
+        width: 100%;
+        background-color: #2d3440;
+        color: #ffffff;
+      }
+
+      input[type="text"]::placeholder {
+        color: #888888;
+      }
+
+      input[type="text"]:focus {
+        outline: none;
+        border: 1px solid #007bff;
+      }
+
+      .submit-button {
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
         width: 100%;
       }
 
-      .submit-button {
-        background-color: #28a745;
-        color: white;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
       .submit-button:hover {
-        background-color: #218838;
+        background-color: #0056b3;
       }
 
       .search-result {
         font-size: 14px;
         text-align: center;
         margin-top: 20px;
+        color: #ffffff;
       }
 
       .client-card {
-        border-radius: 10px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        background-color: #fff;
+        border-radius: 8px;
+        border: none;
+        padding: 20px;
+        background-color: #1f2630;
         margin-top: 15px;
+        color: white;
+      }
+
+      .client-card p {
+        margin: 0;
+      }
+
+      .search-container {
+        position: relative;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .search-container input[type="text"] {
+        padding-right: 50px;
+      }
+
+      .search-container button {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .search-container button img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .home-icon {
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box; /* Ensure padding and border do not add to width */
       }
     </style>
   </head>
   <body>
     <div class="navbar">
-      <button id="searchButton">Home</button>
+      <button id="searchButton">
+        <img src="assets/home.svg" class="home-icon" alt="Home" />
+      </button>
     </div>
 
     <div class="container">
       <!-- Search Page -->
       <div id="searchPage" class="page active">
         <h1>Buscar por cliente</h1>
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Insira o nome do cliente..."
-        />
+        <div class="search-container">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Insira o nome do cliente..."
+          />
+          <button>
+            <img src="assets/magnifier.svg" alt="Search" />
+          </button>
+        </div>
         <div class="search-result" id="searchResult"></div>
         <button class="submit-button" id="newClientButton">
           Adicionar novo cliente

@@ -3,6 +3,7 @@ export function createFileUploadComponent(apiUrl) {
   const container = document.createElement('div');
   container.innerHTML = `
       <div class="file-upload" id="fileUploadArea">
+          <img src="assets/document.svg" alt="Upload Icon" class="upload-icon" />
           <p>Drag & drop files here or click to select</p>
           <input type="file" id="fileInput" class="hidden" multiple />
       </div>
@@ -53,7 +54,7 @@ export function createFileUploadComponent(apiUrl) {
   async function uploadFiles(files) {
     const formData = new FormData();
     files.forEach(file => {
-      formData.append("files[]", file); // Change "files[]" to match your API's expected format
+      formData.append("files[]", file);
     });
 
     try {
@@ -86,10 +87,18 @@ export function createFileUploadComponent(apiUrl) {
           text-align: center;
           cursor: pointer;
           transition: background-color 0.3s;
+          display: flex; /* Use flexbox for alignment */
+          align-items: center; /* Center items vertically */
       }
 
       .file-upload:hover {
           background-color: #f0f8ff;
+      }
+
+      .upload-icon {
+          width: 30px; /* Adjust icon size */
+          height: 30px; /* Adjust icon size */
+          margin-right: 10px; /* Space between icon and text */
       }
 
       .hidden {
