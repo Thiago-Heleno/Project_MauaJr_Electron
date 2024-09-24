@@ -16,15 +16,19 @@
       .navbar {
         display: flex;
         justify-content: flex-start;
-        background-color: #1f2630;
+        /* background-color: #1f2630; */
         padding: 10px;
       }
 
       .navbar button {
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
         font-size: 14px;
         padding: 10px 20px;
         color: white;
-        background-color: #1f2630;
+        background-color: #141a23;
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -37,6 +41,8 @@
 
       .container {
         padding: 20px;
+        margin-left: 10%;
+        margin-right: 10%;
       }
 
       h1 {
@@ -91,7 +97,7 @@
       .search-result {
         font-size: 14px;
         text-align: center;
-        margin-top: 20px;
+        margin: 10px;
         color: #ffffff;
       }
 
@@ -109,8 +115,10 @@
       }
 
       .search-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         position: relative;
-        max-width: 500px;
         margin: 0 auto;
       }
 
@@ -137,7 +145,6 @@
         cursor: pointer;
         width: 25px;
         height: 25px;
-        margin-right: 10px;
       }
       *,
       *::before,
@@ -152,7 +159,6 @@
         <img src="assets/home.svg" class="home-icon" alt="Home" />
       </button>
     </div>
-
     <div class="container">
       <!-- Search Page -->
       <div id="searchPage" class="page active">
@@ -192,13 +198,30 @@
           <input type="text" placeholder="Field 4" required />
           <input type="text" placeholder="Field 5" required />
 
-          <label for="documentCount"
-            >Quantos documentos deseja adicionar?</label
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              padding: 10px;
+              font-size: 16px;
+              padding: 12px;
+              margin-bottom: 15px;
+              border-radius: 25px;
+              border: none;
+              width: 100%;
+              background-color: #2d3440;
+              color: #ffffff;
+            "
           >
-          <input type="number" id="documentCount" min="1" value="1" />
-          <button class="submit-button" type="button" id="renderUploadButton">
-            Adicionar
-          </button>
+            <label for="documentCount"
+              >Quantos documentos deseja adicionar?</label
+            >
+            <input type="number" id="documentCount" min="1" value="1" />
+            <button class="submit-button" type="button" id="renderUploadButton">
+              Adicionar
+            </button>
+          </div>
 
           <div id="fileUploadContainer2"></div>
           <button type="submit" class="submit-button">Submit</button>
