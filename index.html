@@ -178,14 +178,6 @@
         </div>
         <div class="search-result">
           <span id="searchResult"></span>
-          <div class="search-result client-card" id="clientCard">
-            <p>Nome: DECO</p>
-            <p>CPF/CNPJ: 123</p>
-            <span style="visibility: hidden">{name: "Deco"}</span>
-            <button class="submit-button" id="createButton">
-              Gerar relatorio
-            </button>
-          </div>
         </div>
         <button class="submit-button" id="newClientButton">
           Adicionar novo cliente
@@ -196,12 +188,204 @@
       <div id="createPage" class="page">
         <h1>Gerar novo relatorio</h1>
         <form id="createForm">
-          <input type="text" placeholder="Field 1" required />
-          <input type="text" placeholder="Field 2" required />
-          <input type="text" placeholder="Field 3" required />
-          <input type="text" placeholder="Field 4" required />
-          <input type="text" placeholder="Field 5" required />
+          <input type="text" placeholder="Nome" required />
+          <input type="text" placeholder="CNPJ" required />
+          <input type="text" placeholder="Razão Social" required />
+          <input type="text" placeholder="Endereço" required />
+          <input
+            type="text"
+            placeholder="Responsável Técnico do Cliente"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Assistente Técnico do Cliente"
+            required
+          />
 
+          <input type="text" placeholder="Número do Relatório" required />
+          <input type="text" placeholder="Nome do Equipamento" required />
+          <input type="text" placeholder="Tag do Equipamento" required />
+          <input type="text" placeholder="Data Final do Ensaio" required />
+
+          <!-- Quantidade de DLPS -->
+          <input
+            type="text"
+            placeholder="Quantidade de DLPS (ex: 3)"
+            required
+          />
+
+          <!-- Fabricante do Equipamento -->
+          <input
+            type="text"
+            placeholder="Fabricante do Equipamento (ex: Geladeiras S.A.)"
+            required
+          />
+
+          <!-- Modelo do Equipamento -->
+          <input
+            type="text"
+            placeholder="Modelo do Equipamento (ex: Geladeira Top)"
+            required
+          />
+
+          <!-- Número de Série do Equipamento -->
+          <input
+            type="text"
+            placeholder="Número de Série do Equipamento (ex: 123456)"
+            required
+          />
+
+          <!-- Local de Instalação do Equipamento -->
+          <input
+            type="text"
+            placeholder="Local de Instalação do Equipamento (ex: Cozinha)"
+            required
+          />
+
+          <!-- Tipo de Porta do Equipamento -->
+          <input
+            type="text"
+            placeholder="Tipo de Porta do Equipamento (ex: Porta Dupla)"
+            required
+          />
+
+          <!-- Faixa de Uso do Equipamento -->
+          <input
+            type="text"
+            placeholder="Faixa de Uso do Equipamento (ex: 0 a 10°C)"
+            required
+          />
+
+          <!-- Controlador de Temperatura do Equipamento -->
+          <input
+            type="text"
+            placeholder="Controlador de Temperatura do Equipamento (ex: Digital)"
+            required
+          />
+
+          <!-- Setpoint do Equipamento -->
+          <input
+            type="text"
+            placeholder="Setpoint do Equipamento (ex: 4°C)"
+            required
+          />
+
+          <!-- Unidade de Medida -->
+          <input
+            type="text"
+            placeholder="Unidade de Medida (ex: Metros)"
+            required
+          />
+
+          <!-- Altura -->
+          <input type="text" placeholder="Altura (ex: 1.5)" required />
+
+          <!-- Largura -->
+          <input type="text" placeholder="Largura (ex: 0.5)" required />
+
+          <!-- Profundidade -->
+          <input type="text" placeholder="Profundidade (ex: 0.6)" required />
+
+          <!-- Data de Início do Ensaio -->
+          <input
+            type="text"
+            placeholder="Data de Início do Ensaio (ex: 15/09/2024)"
+            required
+          />
+
+          <!-- Data Final do Ensaio -->
+          <input
+            type="text"
+            placeholder="Data Final do Ensaio (ex: 17/09/2024)"
+            required
+          />
+
+          <!-- Condição Visual do Equipamento -->
+          <input
+            type="text"
+            placeholder="Condição Visual do Equipamento (ex: Boa, Ruim, Péssima)"
+            required
+          />
+
+          <!-- Irregularidade -->
+          <input
+            type="text"
+            placeholder="Irregularidade (ex: Sim ou Não)"
+            required
+          />
+
+          <!-- Irregularidade - Motivo -->
+          <input
+            type="text"
+            placeholder="Motivo da Irregularidade (ex: Porta quebrada)"
+            required
+          />
+
+          <!-- Sistema Elétrico Perfeito -->
+          <input
+            type="text"
+            placeholder="Sistema Elétrico Perfeito (ex: Sim ou Não)"
+            required
+          />
+
+          <!-- Tensão Utilizada -->
+          <input
+            type="text"
+            placeholder="Tensão Utilizada (ex: 127 V, 220 V, 340 V)"
+            required
+          />
+
+          <!-- Borracha de Vedação Perfeita -->
+          <input
+            type="text"
+            placeholder="Borracha de Vedação Perfeita (ex: Sim ou Não)"
+            required
+          />
+
+          <!-- Borracha de Vedação - Motivo -->
+          <input
+            type="text"
+            placeholder="Motivo da Borracha de Vedação Imperfeita (ex: Rasgada)"
+            required
+          />
+
+          <!-- Local pode Interferir -->
+          <input
+            type="text"
+            placeholder="Local pode Interferir (ex: Sim ou Não)"
+            required
+          />
+
+          <!-- Local pode Interferir - Motivo -->
+          <input
+            type="text"
+            placeholder="Motivo de Interferência no Local (ex: Muito quente)"
+            required
+          />
+
+          <!-- Ar Condicionado -->
+          <input
+            type="text"
+            placeholder="Ar Condicionado (ex: Sim ou Não)"
+            required
+          />
+
+          <!-- Ar Condicionado Influência -->
+          <input
+            type="text"
+            placeholder="Ar Condicionado Influência (ex: Sim ou Não)"
+            required
+          />
+
+          <!-- Ar Condicionado Influência - Motivo -->
+          <input
+            type="text"
+            placeholder="Motivo da Influência do Ar Condicionado"
+            required
+          />
+
+          <p>Dataloggers:</p>
           <div
             style="
               display: flex;
@@ -228,7 +412,9 @@
           </div>
 
           <div id="fileUploadContainer2"></div>
-          <button type="submit" class="submit-button">Submit</button>
+          <button type="submit" class="submit-button">
+            Gerar novo Relatório
+          </button>
         </form>
       </div>
 
@@ -236,12 +422,23 @@
       <div id="newClientPage" class="page">
         <h1>Adicionar novo cliente</h1>
         <form id="newClientForm">
-          <input type="text" placeholder="Field 1" required />
-          <input type="text" placeholder="Field 2" required />
-          <input type="text" placeholder="Field 3" required />
-          <input type="text" placeholder="Field 4" required />
-          <input type="text" placeholder="Field 5" required />
-          <button type="submit" class="submit-button">Submit</button>
+          <input type="text" placeholder="Nome" required />
+          <input type="text" placeholder="CNPJ" required />
+          <input type="text" placeholder="Razão Social" required />
+          <input type="text" placeholder="Endereço" required />
+          <input
+            type="text"
+            placeholder="Responsável Técnico do Cliente"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Assistente Técnico do Cliente"
+            required
+          />
+          <button type="submit" class="submit-button">
+            Adicionar novo Cliente
+          </button>
         </form>
       </div>
     </div>
@@ -251,16 +448,39 @@
 
       document.addEventListener("DOMContentLoaded", () => {
         const searchButton = document.getElementById("searchButton");
-        const createButton = document.getElementById("createButton");
         const newClientButton = document.getElementById("newClientButton");
 
         const searchPage = document.getElementById("searchPage");
         const createPage = document.getElementById("createPage");
         const newClientPage = document.getElementById("newClientPage");
 
+        function createCard(name, CNPJ, index) {
+          // HTML string for the card
+          const cardHTML = `
+            <div class="search-result client-card">
+              <p>Nome: ${name}</p>
+              <p>CNPJ: ${CNPJ}</p>
+              <span style="visibility: hidden">{name: ${name}}</span>
+              <button class="submit-button" id="createButton-${index}">Gerar relatório</button>
+            </div>
+          `;
+
+          // Select the container where the card should be added
+          const container = document.querySelector(".search-result");
+
+          // Append the card to the container using insertAdjacentHTML
+          container.insertAdjacentHTML("beforeend", cardHTML);
+
+          // Attach the event listener to the newly created button
+          const createButton = document.getElementById(`createButton-${index}`);
+          createButton.addEventListener("click", () => {
+            console.log(name);
+            showPage(createPage);
+          });
+        }
+
         // Handle navigation
         searchButton.addEventListener("click", () => showPage(searchPage));
-        createButton.addEventListener("click", () => showPage(createPage));
         newClientButton.addEventListener("click", () =>
           showPage(newClientPage)
         );
@@ -273,10 +493,34 @@
         }
 
         // Search page functionality
+        async function searchApiUser() {
+          try {
+            const response = await fetch(
+              "https://your-api-endpoint.com/api/users",
+              {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+              }
+            );
+
+            if (response.ok) {
+              const result = await response.json();
+            } else {
+              console.error("Error:", response.statusText);
+            }
+          } catch (error) {
+            console.error("Error:", error);
+          }
+        }
         const searchInput = document.getElementById("searchInput");
         const searchResult = document.getElementById("searchResult");
-
+        const searchResultDiv = document.querySelector(".search-result");
+        searchResultDiv.hidden = true;
         searchInput.addEventListener("input", () => {
+          createCard("Deco", "123.456.789", 1);
+          createCard("ACME Corp", "987.654.321", 2);
+          createCard("XYZ Inc", "456.789.123", 3);
+          searchResultDiv.hidden = false;
           searchResult.innerText = `Resultado para: ${searchInput.value}`;
         });
 
